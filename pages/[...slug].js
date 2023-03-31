@@ -18,7 +18,7 @@ const Page = ( {data, preview = false, menuItems, footerMenuItems} ) => {
 	return (
         <Layout preview={preview} footerMenuItems={footerMenuItems}>
         <Head>
-          <title>Page page</title>
+          <title>{data.title}</title>
         </Head>
         <Container>
           	<Header menuItems={menuItems}/>
@@ -69,17 +69,9 @@ export async function getStaticProps( {params} ) {
  * @returns {Promise<{paths: [], fallback: boolean}>}
  */
 export async function getStaticPaths() {
-	const {data} = await getAllPagesWithSlug();
-
-	const pathsData = [];
-
-	data?.pages?.nodes && data?.pages?.nodes.map( page => {
-			const slugs = page?.uri?.split( '/' ).filter( pageSlug => pageSlug );
-			pathsData.push( {params: {slug: slugs}} );
-	} );
-
+	const allPosts = await getAllPostsWithSlug()
 	return {
-		paths: pathsData,
-        fallback: 'blocking',
-	};
+	  paths: allPosts.edges.map(({ node }) => `${node.slug}/`) || [],
+	  fallback: true,
+	}
 }

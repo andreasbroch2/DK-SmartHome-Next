@@ -17,7 +17,7 @@ export default function NavigationMenu({ menuItems, textColor, column = false })
                     return (
                         // Insert classes from fetch
                         <li key={index} className={`${item.node.cssClasses} text-${textColor} mb-2 md:mb-0 text-lg lg:mx-6`}>
-                            <Link href={item.node.url}>{item.node.label ?? ''}</Link>
+                            <Link href={`${item.node.url}`}>{item.node.label ?? ''}</Link>
                         </li>
                     );
                 })}

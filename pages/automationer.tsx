@@ -18,7 +18,7 @@ const Page = ( {allAutomations, data, preview = false, menuItems, footerMenuItem
 	return (
         <Layout preview={preview} footerMenuItems={footerMenuItems}>
         <Head>
-          <title>Artikel Page</title>
+          <title>{data.title}</title>
         </Head>
         <Container>
           <Header menuItems={menuItems}/>

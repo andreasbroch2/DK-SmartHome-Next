@@ -32,15 +32,11 @@ export default function Meta() {
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
         <meta
           name="description"
           content={`A statically generated blog example using Next.js and ${CMS_NAME}.`} />
         <meta property="og:image" content={HOME_OG_IMAGE_URL} />
       </Head>
-      <Script src="/js/app.js" />
-      <Script src="https://dksmarthome.dk/wp-includes/js/jquery/jquery.min.js?ver=3.6.3" />
-      <Script src="https://dksmarthome.dk/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.0" />
     </>
   )
 }

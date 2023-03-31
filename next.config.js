@@ -31,4 +31,5 @@ module.exports = {
       'secure.gravatar.com',
     ],
   },
+  trailingSlash: true,
 }

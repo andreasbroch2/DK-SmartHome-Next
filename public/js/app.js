@@ -1,5 +1,5 @@
 (() => {
-  if ($('#toc').length > 0) {
+  if (jQuery('#toc').length > 0) {
     htmlTableOfContents();
   }
   function convertToSlug(str) {
@@ -80,30 +80,31 @@
   } catch (e) {
     // module.exports is not defined
   }
-// resources/js/app.js
-function isInViewport(element) {
-  var rect = element.getBoundingClientRect();
-  var html = document.documentElement;
-  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || html.clientHeight) && rect.right <= (window.innerWidth || html.clientWidth);
-}
-window.addEventListener("scroll", function () {
-  function flowAnimation() {
-    jQuery(".step").each(function (i) {
-      jQuery(this).delay(i * 1500).queue(function () {
-        jQuery(this).addClass("active done");
-        jQuery(this).find(".checkmark").css("visibility", "visible");
-        setTimeout(function () {
-          jQuery(".step").removeClass("active");
-        }, 750);
-      });
-    });
+  // resources/js/app.js
+  function isInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    var html = document.documentElement;
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || html.clientHeight) && rect.right <= (window.innerWidth || html.clientWidth);
   }
-  ;
-  let flowContainer = document.querySelectorAll(".flow-container");
-  flowContainer.forEach(function (element) {
-    if (isInViewport(element)) {
-      flowAnimation();
+  window.addEventListener("scroll", function () {
+    function flowAnimation() {
+      jQuery(".step").each(function (i) {
+        jQuery(this).delay(i * 1500).queue(function () {
+          jQuery(this).addClass("active done");
+          jQuery(this).find(".checkmark").css("visibility", "visible");
+          setTimeout(function () {
+            jQuery(".step").removeClass("active");
+          }, 750);
+        });
+      });
     }
+    ;
+    let flowContainer = document.querySelectorAll(".flow-container");
+    flowContainer.forEach(function (element) {
+      if (isInViewport(element)) {
+        console.log('in viewport');
+        flowAnimation();
+      }
+    });
   });
-});
-  }) ();
+})();

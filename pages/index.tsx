@@ -20,7 +20,7 @@ export default function Index({ data, preview, menuItems, footerMenuItems }) {
     <>
     <Script src="https://kit.fontawesome.com/bf7aea6dc3.js" /><Layout preview={preview} footerMenuItems={footerMenuItems}>
       <Head>
-        <title>{`Index`}</title>
+        <title>{data.title}</title>
       </Head>
       <Container>
         <Header menuItems={menuItems} />
