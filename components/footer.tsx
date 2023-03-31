@@ -1,30 +1,30 @@
 import Container from './container'
-import { EXAMPLE_PATH } from '../lib/constants'
+import Image from 'next/image'
+import NavigationMenu from './nav-menu'
 
-export default function Footer() {
+export default function Footer({ menuItems }) {
   return (
-    <footer className="bg-accent-1 border-t border-accent-2">
-      <Container>
-        <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            Statically Generated with Next.js.
-          </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
-            <a
-              href="https://nextjs.org/docs/basic-features/pages"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
-            >
-              Read Documentation
-            </a>
-            <a
-              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
-              className="mx-3 font-bold hover:underline"
-            >
-              View on GitHub
-            </a>
+    <footer id="colophon" className="site-footer bg-secondary py-8 md:p-16 text-light" role="contentinfo">
+    <div className="container mx-auto max-w-content">
+      <div className="flex flex-col md:flex-row gap-4 mb-8 place-content-between">
+        <div className="basis-1/4">
+          <div className="max-w-[160px] mb-4">
+          <Image src="/favicon/dk-smarthome-logo.png" alt="DK Smarthome - Logo" width={160}  height={59} ></Image>
           </div>
         </div>
-      </Container>
-    </footer>
+        <div className="basis-1/3">
+          <p className="footer-header">Nyttige Links</p>
+          <NavigationMenu menuItems={menuItems} textColor="white" />
+        </div>
+        <div className="basis-1/3">
+          <p className="footer-header">Kontakt</p>
+          <p>E-mail: info@dksmarthome.dk</p>
+        </div>
+      </div>
+      <div>
+        &copy; 2023 - DK Smart Home
+      </div>
+    </div>
+  </footer>
   )
 }

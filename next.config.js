@@ -4,9 +4,24 @@ if (!process.env.WORDPRESS_API_URL) {
     Add to your environment variables WORDPRESS_API_URL.
   `)
 }
+const securityHeaders = [
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload'
+  }
+]
 
 /** @type {import('next').NextConfig} */
 module.exports = {
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
+  },
   images: {
     domains: [
       process.env.WORDPRESS_API_URL.match(/(?!(w+)\.)\w*(?:\w+\.)+\w+/)[0], // Valid WP Image domain.

@@ -1,45 +1,42 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/api'
-import { CMS_NAME } from '../lib/constants'
+import { getSinglePage } from '../lib/api'
+import Header from '../components/header'
+import { getNavMenu } from '../lib/api'
+import { useRouter } from 'next/router'
+import Script from 'next/script'
 
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node
-  const morePosts = edges.slice(1)
+export default function Index({ data, preview, menuItems, footerMenuItems }) {
+	const router = useRouter();
 
+	// If the page is not yet generated, this will be displayed
+	// initially until getStaticProps() finishes running
+	if ( router.isFallback ) {
+		return <div>Indlæser...</div>;
+	}
   return (
-    <Layout preview={preview}>
+    <>
+    <Script src="https://kit.fontawesome.com/bf7aea6dc3.js" /><Layout preview={preview} footerMenuItems={footerMenuItems}>
       <Head>
-        <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
+        <title>{`Index`}</title>
       </Head>
       <Container>
-        <Intro />
-        {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.featuredImage}
-            date={heroPost.date}
-            author={heroPost.author}
-            slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
-          />
-        )}
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        <Header menuItems={menuItems} />
+        <div className='entry-content homepage' dangerouslySetInnerHTML={{ __html: data?.content }} />
       </Container>
     </Layout>
+    </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allPosts = await getAllPostsForHome(preview)
-
+  const data = await getSinglePage("/")
+  const menuItems = await getNavMenu('PRIMARY')
+  const footerMenuItems = await getNavMenu('FOOTER')
   return {
-    props: { allPosts, preview },
+    props: { data, preview, menuItems, footerMenuItems },
     revalidate: 10,
   }
 }

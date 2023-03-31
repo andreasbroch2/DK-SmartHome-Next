@@ -2,7 +2,6 @@ const API_URL = process.env.WORDPRESS_API_URL
 
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' }
-
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
     headers[
       'Authorization'
@@ -58,7 +57,40 @@ export async function getAllPostsWithSlug() {
   `)
   return data?.posts
 }
-
+// Get all pages
+export async function getAllPagesWithSlug() {
+  const data = await fetchAPI(`
+    {
+      pages(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+  return data?.pages
+}
+export async function getSinglePage(slug) {
+  const data = await fetchAPI(`
+	query GET_PAGE{
+	  page: pageBy(uri: "${slug}") {
+	    id
+	    title
+	    content
+	    slug
+	    uri
+	  }
+	}
+  `,
+    {
+      variables: {
+        slug: slug,
+      },
+    })
+  return data?.page
+}
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
@@ -66,6 +98,7 @@ export async function getAllPostsForHome(preview) {
       posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
+            id
             title
             excerpt
             slug
@@ -73,6 +106,7 @@ export async function getAllPostsForHome(preview) {
             featuredImage {
               node {
                 sourceUrl
+                altText
               }
             }
             author {
@@ -155,9 +189,9 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
         ...PostFields
         content
         ${
-          // Only some of the fields of a revision are considered as there are some inconsistencies
-          isRevision
-            ? `
+    // Only some of the fields of a revision are considered as there are some inconsistencies
+    isRevision
+      ? `
         revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
           edges {
             node {
@@ -173,8 +207,8 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
           }
         }
         `
-            : ''
-        }
+      : ''
+    }
       }
       posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
@@ -209,4 +243,56 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   if (data.posts.edges.length > 2) data.posts.edges.pop()
 
   return data
+}
+export async function getNavMenu(location) {
+  const data = await fetchAPI(`
+    {
+      menuItems(where: {location: ${location}}) {
+        edges {
+          node {
+            label
+            url
+            cssClasses
+            childItems {
+              edges {
+                node {
+                  label
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  return data?.menuItems
+}
+export async function getAllAutomations() {
+  const data = await fetchAPI(`
+    {
+      automations(first: 10000) {
+          nodes {
+            id
+            title
+            content
+        }
+      }
+    }
+  `)
+  return data?.automations
+}
+export async function getAllHardwares() {
+  const data = await fetchAPI(`
+    {
+      hardwares(first: 10000) {
+          nodes {
+            id
+            title
+            content
+        }
+      }
+    }
+  `)
+  return data?.hardwares
 }

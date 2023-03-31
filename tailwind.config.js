@@ -12,15 +12,20 @@ module.exports = {
         'accent-7': '#333',
         success: '#0070f3',
         cyan: '#79FFE1',
+        primary: "#E87121",
+        secondary: "#375768",
+        lightgreen: "#bbe3a6",
+        light: "#E3EBF1"
       },
       spacing: {
         28: '7rem',
+        content: '1140px',
       },
       letterSpacing: {
         tighter: '-.04em',
       },
       lineHeight: {
-        tight: 1.2,
+        'extra-tight': '1.15',
       },
       fontSize: {
         '5xl': '2.5rem',
@@ -32,6 +37,10 @@ module.exports = {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
+      fontFamily: {
+        primary: 'Poppins, sans-serif',
+        secondary: 'Poppins, sans-serif',
+    },
     },
   },
   plugins: [],
