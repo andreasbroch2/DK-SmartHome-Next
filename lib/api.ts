@@ -87,6 +87,7 @@ export async function getSinglePage(slug) {
           url
         }
         title
+        canonical
         metaDesc
         metaRobotsNoindex
         metaRobotsNofollow
@@ -217,6 +218,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
             text
             url
           }
+          canonical
           title
           metaDesc
           metaRobotsNoindex
