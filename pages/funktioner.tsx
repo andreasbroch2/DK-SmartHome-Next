@@ -18,7 +18,7 @@ const Page = ( {allHardwares, data, preview = false, menuItems, footerMenuItems}
 	return (
         <Layout preview={preview} footerMenuItems={footerMenuItems}>
         <Head>
-          <title>{data.title}</title>
+          <title>{data.seo.title}</title>
         </Head>
         <Container>
           <Header menuItems={menuItems}/>

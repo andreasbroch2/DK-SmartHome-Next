@@ -4,20 +4,15 @@ import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
-import MoreStories from '../../components/more-stories'
 import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
 import PostTitle from '../../components/post-title'
-import Tags from '../../components/tags'
 import { getAllPostsWithSlug, getPostAndMorePosts, getNavMenu } from '../../lib/api'
 import Image from 'next/image'
 
 
-export default function Post({ post, posts, preview, menuItems, footerMenuItems }) {
+export default function Post({ post, preview, menuItems, footerMenuItems }) {
   const router = useRouter()
-  const morePosts = posts?.edges
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -34,7 +29,7 @@ export default function Post({ post, posts, preview, menuItems, footerMenuItems 
             <article>
               <Head>
                 <title>
-                  {`${post.title}`}
+                  {`${post?.title}`}
                 </title>
                 <meta
                   property="og:image"
@@ -85,7 +80,6 @@ export const getStaticProps: GetStaticProps = async ({
   const data = await getPostAndMorePosts(params?.slug, preview, previewData)
   const menuItems = await getNavMenu('PRIMARY');
   const footerMenuItems = await getNavMenu('FOOTER');
-
   return {
     props: {
       preview,

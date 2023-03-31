@@ -81,6 +81,9 @@ export async function getSinglePage(slug) {
 	    content
 	    slug
 	    uri
+      seo {
+        title
+      }
 	  }
 	}
   `,
