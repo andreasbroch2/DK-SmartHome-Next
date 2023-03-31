@@ -19,7 +19,7 @@ export default function Post({ post, preview, menuItems, footerMenuItems }) {
   }
 
   return (
-    <Layout preview={preview} footerMenuItems={footerMenuItems}>
+    <Layout preview={preview} footerMenuItems={footerMenuItems} data={post}>
       <Container>
         <Header menuItems={menuItems} />
         {router.isFallback ? (

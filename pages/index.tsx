@@ -17,8 +17,8 @@ export default function Index({ data, preview, menuItems, footerMenuItems }) {
 		return <div>Indlæser...</div>;
 	}
   return (
-    <>
-    <Script src="https://kit.fontawesome.com/bf7aea6dc3.js" /><Layout preview={preview} footerMenuItems={footerMenuItems}>
+    <Layout preview={preview} footerMenuItems={footerMenuItems} data={data}>
+    <Script src="https://kit.fontawesome.com/bf7aea6dc3.js" />
       <Head>
         <title>{data.seo.title}</title>
       </Head>
@@ -27,7 +27,6 @@ export default function Index({ data, preview, menuItems, footerMenuItems }) {
         <div className='entry-content homepage' dangerouslySetInnerHTML={{ __html: data?.content }} />
       </Container>
     </Layout>
-    </>
   )
 }
 

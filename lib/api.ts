@@ -82,8 +82,29 @@ export async function getSinglePage(slug) {
 	    slug
 	    uri
       seo {
+        breadcrumbs {
+          text
+          url
+        }
         title
-      }
+        metaDesc
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphAuthor
+        opengraphDescription
+        opengraphTitle
+        opengraphImage {
+          sourceUrl
+        }
+        opengraphSiteName
+        opengraphPublishedTime
+        opengraphModifiedTime
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          sourceUrl
+  }
+          }
 	  }
 	}
   `,
@@ -191,6 +212,30 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       post(id: $id, idType: $idType) {
         ...PostFields
         content
+        seo {
+          breadcrumbs {
+            text
+            url
+          }
+          title
+          metaDesc
+          metaRobotsNoindex
+          metaRobotsNofollow
+          opengraphAuthor
+          opengraphDescription
+          opengraphTitle
+          opengraphImage {
+            sourceUrl
+          }
+          opengraphSiteName
+          opengraphPublishedTime
+          opengraphModifiedTime
+          twitterTitle
+          twitterDescription
+          twitterImage {
+            sourceUrl
+          }
+        }
         ${
     // Only some of the fields of a revision are considered as there are some inconsistencies
     isRevision
@@ -209,6 +254,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
             }
           }
         }
+        
         `
       : ''
     }

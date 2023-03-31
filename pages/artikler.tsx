@@ -16,7 +16,7 @@ const Page = ( {allPosts, data, preview = false, menuItems, footerMenuItems} ) =
 	}
 
 	return (
-        <Layout preview={preview} footerMenuItems={footerMenuItems}>
+        <Layout preview={preview} footerMenuItems={footerMenuItems} data={data}>
         <Head>
           <title>{data?.seo.title}</title>
         </Head>
