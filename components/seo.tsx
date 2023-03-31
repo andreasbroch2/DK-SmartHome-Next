@@ -5,6 +5,7 @@ export default function Seo ( {seo, uri} ){
 	const {
 		title,
 		metaDesc,
+        canonical,
 		metaRobotsNoindex,
 		metaRobotsNofollow,
 		opengraphDescription,
@@ -20,7 +21,7 @@ export default function Seo ( {seo, uri} ){
 		<NextSeo
 			title={title}
 			description={opengraphDescription || metaDesc}
-			canonical={opengraphUrl}
+			canonical={canonical}
 			noindex={"noindex" === metaRobotsNoindex }
 			nofollow={"nofollow" === metaRobotsNofollow}
 			openGraph={{
