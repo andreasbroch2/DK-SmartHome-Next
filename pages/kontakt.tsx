@@ -5,7 +5,6 @@ import Container from '../components/container';
 import Header from '../components/header';
 import { getSinglePage, getNavMenu } from '../lib/api';
 import imgConverter from '../lib/imgConverter';
-import { useState } from "react";
 import MailchimpSubscribe from "react-mailchimp-subscribe"
 import ContactForm from '../components/contactForm';
 
@@ -44,7 +43,7 @@ const Page = ({ data, preview = false, menuItems, footerMenuItems }) => {
                         dangerouslySetInnerHTML={{ __html: message }}
                     />
                 )}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="md:grid md:grid-cols-2 gap-4">
                     <input
                         ref={node => (fname = node)}
                         type="text"
@@ -56,7 +55,7 @@ const Page = ({ data, preview = false, menuItems, footerMenuItems }) => {
                         placeholder="Efternavn"
                     />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="md:grid md:grid-cols-2 gap-4">
                     <input
                         ref={node => (email = node)}
                         type="email"

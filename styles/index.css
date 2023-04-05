@@ -3,6 +3,7 @@
 @layer base {
   html {
     @apply font-primary;
+    scroll-behavior: smooth;
   }
   h1 {
     @apply text-4xl md:text-6xl leading-extra-tight;
@@ -146,8 +147,10 @@ article>*:not(.entry-content),
 
 .wp-block-cover {
   @apply flex flex-wrap justify-center items-center bg-cover bg-center overflow-hidden;
-
   min-height: 430px;
+  img{
+    @apply rounded-none;
+  }
 }
 
 .wp-block-verse {
@@ -243,9 +246,9 @@ body.single-post {
 }
 
 .wp-block-columns {
+  @apply flex flex-col md:flex-row;
   .wp-block-column {
-    @apply flex flex-col;
-    flex-basis: 0;
+    @apply flex flex-col basis-0;
     flex-grow: 1;
   }
 }
@@ -302,7 +305,6 @@ body.single-post {
   margin: 20px auto;
   background-color: #E3EBF1;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-
   img {
     height: 16rem;
     max-height: 16rem;
@@ -315,9 +317,11 @@ body.single-post {
     -o-object-position: center;
     object-position: center;
   }
-
   p {
     margin: 12px 0;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 }
 
@@ -360,9 +364,27 @@ form.form, .form {
     @apply w-full md:w-1/2 p-2 bg-primary text-white;
   }
 }
-
+.yarpp-thumbnails-horizontal{
+  @apply grid grid-cols-2 md:grid-cols-4 gap-2 text-center;
+  a{
+    @apply flex flex-col hover:text-primary items-center;
+  }
+}
+.single-post .entry-content{
+  ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    a:hover{
+      @apply text-primary;
+    }
+  }
+ p {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+}
 footer {
-  @apply text-black;
+  @apply text-black px-8;
 
   ul {
     li {
@@ -374,7 +396,12 @@ footer {
     @apply mb-4;
   }
 }
-
+#article-text{
+  @apply my-8;
+  h2, h3, h4{
+    @apply mb-4;
+  }
+}
 ul.price-items-list {
   @apply text-xl leading-loose;
 }
@@ -525,7 +552,6 @@ footer {
 
 .flow-container {
   @apply transition-all duration-1000;
-
   .step {
     @apply w-2/3 transition-all duration-1000;
 
@@ -606,7 +632,7 @@ footer {
   @apply flex flex-wrap items-center place-content-around gap-y-8;
 
   .wp-block-group {
-    @apply flex flex-col items-center md:basis-1/4 text-xl;
+    @apply flex flex-col items-center px-2 md:px-0 md:basis-1/4 text-xl;
 
     img {
       @apply max-h-24 w-auto;
@@ -726,7 +752,9 @@ body.single-post {
   display: flex;
 }
 
-.wp-block-cover__background {
+.wp-block-cover{
+  @apply px-4;
+&__background {
   background-color: #000;
   bottom: 0;
   left: 0;
@@ -735,4 +763,5 @@ body.single-post {
   right: 0;
   top: 0;
   z-index: 1;
+}
 }

@@ -1,7 +1,4 @@
 (() => {
-  if (document.querySelector('#toc')) {
-    htmlTableOfContents();
-  }
   function convertToSlug(str) {
     //replace all special characters | symbols with a space
     str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ')

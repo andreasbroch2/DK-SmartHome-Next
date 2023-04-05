@@ -187,6 +187,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       featuredImage {
         node {
           sourceUrl
+          altText
         }
       }
       author {

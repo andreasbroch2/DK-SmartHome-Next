@@ -30,6 +30,7 @@ export default function Meta() {
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <meta charSet="utf-8" />
       </Head>
     </>
   )
