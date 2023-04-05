@@ -24,7 +24,9 @@
     @apply mb-3;
   }
 }
-
+figure{
+  position: relative!important;
+}
 /* Write your own custom base styles here */
 
 /* Start purging... */
