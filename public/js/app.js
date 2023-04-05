@@ -1,5 +1,5 @@
 (() => {
-  if (jQuery('#toc').length > 0) {
+  if (document.querySelector('#toc')) {
     htmlTableOfContents();
   }
   function convertToSlug(str) {

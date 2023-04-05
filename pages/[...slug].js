@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import Head from 'next/head';
 import Container from '../components/container';
 import Header from '../components/header';
-
+import imgConverter from '../lib/imgConverter';
 import {getAllPagesWithSlug, getSinglePage, getNavMenu} from '../lib/api';
 
 const Page = ( {data, preview = false, menuItems, footerMenuItems} ) => {
@@ -22,7 +22,7 @@ const Page = ( {data, preview = false, menuItems, footerMenuItems} ) => {
         </Head>
         <Container>
           	<Header menuItems={menuItems}/>
-        	<div className='entry-content' dangerouslySetInnerHTML={{__html: data?.content }}/>
+			  <div className='entry-content'>{imgConverter(data.content)}</div>
         </Container>
       </Layout>
 	);

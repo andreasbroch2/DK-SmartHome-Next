@@ -5,6 +5,7 @@ import Container from '../components/container';
 import Header from '../components/header';
 import Posts from '../components/posts';
 import {getSinglePage, getNavMenu, getAllPostsForHome} from '../lib/api';
+import imgConverter from '../lib/imgConverter';
 
 const Page = ( {allPosts, data, preview = false, menuItems, footerMenuItems} ) => {
 	const router = useRouter();
@@ -22,7 +23,7 @@ const Page = ( {allPosts, data, preview = false, menuItems, footerMenuItems} ) =
         </Head>
         <Container>
           <Header menuItems={menuItems}/>
-              <div dangerouslySetInnerHTML={{__html: data?.content }}/>
+          <div className='entry-content'>{imgConverter(data.content)}</div>
               <Posts posts={allPosts?.edges ?? []}/>
         </Container>
       </Layout>

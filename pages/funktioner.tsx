@@ -5,6 +5,7 @@ import Container from '../components/container';
 import Header from '../components/header';
 import {getSinglePage, getNavMenu, getAllHardwares} from '../lib/api';
 import Hardwares from '../components/hardwares';
+import imgConverter from '../lib/imgConverter';
 
 const Page = ( {allHardwares, data, preview = false, menuItems, footerMenuItems} ) => {
 	const router = useRouter();
@@ -21,8 +22,8 @@ const Page = ( {allHardwares, data, preview = false, menuItems, footerMenuItems}
           <title>{data.seo.title}</title>
         </Head>
         <Container>
-          <Header menuItems={menuItems}/>
-              <div dangerouslySetInnerHTML={{__html: data?.content }}/>
+          <Header menuItems={menuItems}/> 
+          <div className='entry-content'>{imgConverter(data.content)}</div>
               <h2 className='text-center my-8'>Udstyr</h2>
               <Hardwares hardwares={allHardwares?.nodes ?? []}/>
         </Container>
