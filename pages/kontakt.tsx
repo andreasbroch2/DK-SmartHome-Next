@@ -7,6 +7,7 @@ import { getSinglePage, getNavMenu } from '../lib/api';
 import imgConverter from '../lib/imgConverter';
 import { useState } from "react";
 import MailchimpSubscribe from "react-mailchimp-subscribe"
+import ContactForm from '../components/contactForm';
 
 const Page = ({ data, preview = false, menuItems, footerMenuItems }) => {
     const router = useRouter();
@@ -56,16 +57,16 @@ const Page = ({ data, preview = false, menuItems, footerMenuItems }) => {
                     />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                <input
-                    ref={node => (email = node)}
-                    type="email"
-                    placeholder="Din e-mail"
-                />
-                                <input
-                    ref={node => (phone = node)}
-                    type="number"
-                    placeholder="Dit telefonnummer"
-                />
+                    <input
+                        ref={node => (email = node)}
+                        type="email"
+                        placeholder="Din e-mail"
+                    />
+                    <input
+                        ref={node => (phone = node)}
+                        type="number"
+                        placeholder="Dit telefonnummer"
+                    />
                 </div>
                 <input
                     ref={node => (adresse = node)}
@@ -80,32 +81,11 @@ const Page = ({ data, preview = false, menuItems, footerMenuItems }) => {
             </div>
         );
     };
-
     // If the page is not yet generated, this will be displayed
     // initially until getStaticProps() finishes running
     if (router.isFallback) {
         return <div>Indlæser...</div>;
     }
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        address: "",
-        comments: "",
-    });
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // handle form submission logic here
-    };
     return (
         <Layout preview={preview} footerMenuItems={footerMenuItems} data={data}>
             <Head>
@@ -130,25 +110,7 @@ const Page = ({ data, preview = false, menuItems, footerMenuItems }) => {
                     </div>
                     <div className="basis-1/2">
                         <h2 className="mb-4">Send en besked</h2>
-                        <form action="https://dksmarthome.dk/wp-admin/admin-ajax.php" id="contactForm" method="post" className="form" onSubmit={handleSubmit}>
-                            <ul>
-                                <li>
-                                    <input type="text" placeholder="Name" name="contactName" id="contactName" value={formData.firstName} onChange={handleInputChange} />
-                                </li>
-                                <li>
-                                    <input type="text" placeholder="Email" name="email" id="email" value={formData.email} onChange={handleInputChange} />
-                                </li>
-                                <li>
-                                    <textarea name="comments" placeholder="Write your message here..." id="commentsText" value={formData.comments} onChange={handleInputChange}></textarea>
-                                </li>
-                                <li className="text-center">
-                                    <button type="submit" id="submitButton" className="btn">
-                                        Send besked
-                                    </button>
-                                </li>
-                            </ul>
-                            <input type="hidden" name="submitted" id="submitted" value="true" />
-                        </form>
+                        <ContactForm />
                     </div>
                 </div>
             </Container>
