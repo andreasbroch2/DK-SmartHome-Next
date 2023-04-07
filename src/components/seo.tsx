@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
+import Script from 'next/script';
 import PropTypes from 'prop-types';
 
 export default function Seo({ seo, uri }) {
@@ -17,11 +18,10 @@ export default function Seo({ seo, uri }) {
 
 	const currentLocation = process.browser ? window.location.origin : null;
 	const opengraphUrl = (process.env.NEXT_PUBLIC_NEXTJS_SITE_URL ? process.env.NEXT_PUBLIC_NEXTJS_SITE_URL : currentLocation) + uri;
-
 	return (
 		<>
 		<Head>
-			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.parse(seo.schema?.raw) }}/>
+			<Script type="application/ld+json" dangerouslySetInnerHTML={{ __html: seo.schema?.raw }}/>
 		</Head>
 		<NextSeo
 				title={title}
