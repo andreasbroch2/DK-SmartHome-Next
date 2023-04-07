@@ -16,11 +16,8 @@ function Error404( {data} ) {
                                 Sorry No result found
 							</h1>
 							<div className="flex justify-center">
-								<Link href="/">
-									<a
-										className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back
-                                        to Home
-									</a>
+								<Link href="/" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+									Back to Home
 								</Link>
 							</div>
 						</div>
