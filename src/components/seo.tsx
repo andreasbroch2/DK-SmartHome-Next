@@ -22,7 +22,7 @@ export default function Seo ( {seo, uri} ){
 			title={title}
 			description={opengraphDescription || metaDesc}
 			// String repalcement to remove .ditsmartehjem from canonical url
-			canonical={canonical.replace( '.ditsmartehjem.dk', '' )}
+			canonical={canonical.replace( '.ditsmartehjem', '' )}
 			noindex={"noindex" === metaRobotsNoindex }
 			nofollow={"nofollow" === metaRobotsNofollow}
 			openGraph={{

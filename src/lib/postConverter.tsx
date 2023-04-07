@@ -3,7 +3,7 @@ import React from "react";
 const parse = require('html-react-parser');
 
 export default function postConverter(element) {
-  var cleanElement = element.replace(/\n/g, '');
+  var cleanElement = element.replace(/\n/g, '').replace('.ditsmartehjem', '');
   var cleanJsx = parse(cleanElement);
   var imgNumber = 0;
   function reactNodeToImg(node) {
