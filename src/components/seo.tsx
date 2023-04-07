@@ -1,12 +1,12 @@
-import {NextSeo} from 'next-seo';
+import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-export default function Seo ( {seo, uri} ){
+export default function Seo({ seo, uri }) {
 	const {
 		title,
 		metaDesc,
-        canonical,
+		canonical,
 		metaRobotsNoindex,
 		metaRobotsNofollow,
 		opengraphDescription,
@@ -16,12 +16,14 @@ export default function Seo ( {seo, uri} ){
 	} = seo;
 
 	const currentLocation = process.browser ? window.location.origin : null;
-	const opengraphUrl = ( process.env.NEXT_PUBLIC_NEXTJS_SITE_URL ? process.env.NEXT_PUBLIC_NEXTJS_SITE_URL : currentLocation ) + uri;
+	const opengraphUrl = (process.env.NEXT_PUBLIC_NEXTJS_SITE_URL ? process.env.NEXT_PUBLIC_NEXTJS_SITE_URL : currentLocation) + uri;
 
 	return (
-		<><Head>
-			<script type="application/ld+json" className="yoast-schema-graph">{seo.schema?.raw}</script>
-		</Head><NextSeo
+		<>
+		<Head>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(seo.schema?.raw) }}/>
+		</Head>
+		<NextSeo
 				title={title}
 				description={opengraphDescription || metaDesc}
 				// String repalcement to remove .ditsmartehjem from canonical url
