@@ -20,7 +20,7 @@ export default function Seo ( {seo, uri} ){
 
 	return (
 		<><Head>
-			<script type="application/ld+json" className="yoast-schema-graph">{seo.schema.raw}</script>
+			<script type="application/ld+json" className="yoast-schema-graph">{seo.schema?.raw}</script>
 		</Head><NextSeo
 				title={title}
 				description={opengraphDescription || metaDesc}
