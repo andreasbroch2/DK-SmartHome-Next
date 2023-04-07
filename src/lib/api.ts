@@ -85,6 +85,7 @@ export async function getSinglePage(slug) {
         breadcrumbs {
           text
           url
+
         }
         title
         canonical
@@ -100,6 +101,9 @@ export async function getSinglePage(slug) {
         opengraphSiteName
         opengraphPublishedTime
         opengraphModifiedTime
+        schema{
+          raw
+        }
         twitterTitle
         twitterDescription
         twitterImage {
@@ -233,6 +237,9 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
           opengraphSiteName
           opengraphPublishedTime
           opengraphModifiedTime
+          schema{
+            raw
+          }
           twitterTitle
           twitterDescription
           twitterImage {
