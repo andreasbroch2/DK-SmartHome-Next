@@ -3,7 +3,6 @@ import React from "react";
 const parse = require('html-react-parser');
 
 export default function postConverter(element) {
-  console.log(element);
   var cleanJsx = parse(element);
   var imgNumber = 0;
   function reactNodeToImg(node) {

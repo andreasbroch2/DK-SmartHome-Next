@@ -4,7 +4,8 @@ const parse = require('html-react-parser');
 
 
 export default function imgConverter(element) {
-  var cleanElement = element.replace(/\n/g, '').replace('.ditsmartehjem', '');
+  var cleanElement = element.replace(/\n/g, '');
+  cleanElement = cleanElement.replace(/href="https:\/\/dksmarthome\.ditsmartehjem\.dk/g, 'href="https://dksmarthome.dk');
   var cleanJsx = parse(cleanElement);
   var imgNumber = 0;
   function reactNodeToImg(node) {
