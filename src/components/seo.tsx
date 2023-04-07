@@ -21,7 +21,7 @@ export default function Seo({ seo, uri }) {
 	return (
 		<>
 		<Head>
-			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: seo?.schema.raw }} />
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: seo.schema?.raw }} />
 		</Head>
 		<NextSeo
 				title={title}

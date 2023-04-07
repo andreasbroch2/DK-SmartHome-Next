@@ -101,7 +101,7 @@ export async function getSinglePage(slug) {
         opengraphSiteName
         opengraphPublishedTime
         opengraphModifiedTime
-        schema{
+        schema {
           raw
         }
         twitterTitle
@@ -237,7 +237,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
           opengraphSiteName
           opengraphPublishedTime
           opengraphModifiedTime
-          schema{
+          schema {
             raw
           }
           twitterTitle
