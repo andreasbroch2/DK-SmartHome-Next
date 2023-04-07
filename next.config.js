@@ -4,16 +4,6 @@ if (!process.env.WORDPRESS_API_URL) {
     Add to your environment variables WORDPRESS_API_URL.
   `)
 }
-// Before defining your Security Headers
-// add Content Security Policy directives using a template string.
-
-const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self';
-  child-src example.com;
-  style-src 'self' example.com;
-  font-src 'self';  
-`
 const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
@@ -31,10 +21,6 @@ const securityHeaders = [
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin'
   },
-  {
-    key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
-  }
 ]
 
 /** @type {import('next').NextConfig} */

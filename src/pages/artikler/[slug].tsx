@@ -12,7 +12,7 @@ import Image from 'next/image'
 import Toc from '../../components/toc'
 
 
-export default function Post({ post, preview, menuItems, footerMenuItems }) {
+export default function Post({ post, preview, menuItems, footerMenuItems, cleanElement }) {
   const router = useRouter()
 
   if (!router.isFallback && !post?.slug) {
@@ -51,7 +51,7 @@ export default function Post({ post, preview, menuItems, footerMenuItems }) {
                   <div className="md:basis-2/3">
                     <div className="max-w-3xl mx-auto">
                       <div id="article-text">
-                        {postConverter(post.content)}
+                        {postConverter(cleanElement)}
                       </div>
                     </div>
                   </div>
@@ -81,6 +81,8 @@ export const getStaticProps: GetStaticProps = async ({
   const data = await getPostAndMorePosts(params?.slug, preview, previewData)
   const menuItems = await getNavMenu('PRIMARY');
   const footerMenuItems = await getNavMenu('FOOTER');
+  var cleanElement = data.post.content.replace(/\n/g, '')
+  cleanElement = cleanElement.replace(/href="https:\/\/dksmarthome\.ditsmartehjem\.dk/g, 'href="https://dksmarthome.dk');
   return {
     props: {
       preview,
@@ -88,6 +90,7 @@ export const getStaticProps: GetStaticProps = async ({
       posts: data.posts,
       menuItems,
       footerMenuItems,
+      cleanElement,
     },
     revalidate: 10,
   }

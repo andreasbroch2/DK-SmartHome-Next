@@ -43,6 +43,10 @@ footer ul{
   @apply flex-col;
 }
 /* Your own custom utilities */
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+};
 .usp-box-container {
   @apply flex flex-wrap items-center place-content-around gap-y-8;
 
