@@ -10,7 +10,7 @@ import {getAllPagesWithSlug, getSinglePage, getNavMenu} from '../lib/api';
 export default function Page( {data, preview = false, menuItems, footerMenuItems} ) {
 	const router = useRouter();
 
-	if ( router.isFallback ) {
+	if ( router.isFallback  && !data?.slug ) {
 		return <div>Indlæser...</div>;
 	}
 
