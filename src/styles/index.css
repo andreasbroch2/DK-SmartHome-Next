@@ -4,6 +4,7 @@
   html {
     @apply font-primary;
     scroll-behavior: smooth;
+    overflow-y: overlay;
   }
   h1 {
     @apply text-4xl md:text-6xl leading-extra-tight;
