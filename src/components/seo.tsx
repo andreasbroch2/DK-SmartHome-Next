@@ -22,7 +22,7 @@ export default function Seo ( {seo, uri} ){
 			title={title}
 			description={opengraphDescription || metaDesc}
 			// String repalcement to remove .ditsmartehjem from canonical url
-			canonical={canonical.replace( '.ditsmarthjem.dk', '' )}
+			canonical={canonical.replace( '.ditsmartehjem.dk', '' )}
 			noindex={"noindex" === metaRobotsNoindex }
 			nofollow={"nofollow" === metaRobotsNofollow}
 			openGraph={{
@@ -41,11 +41,6 @@ export default function Seo ( {seo, uri} ){
 				/* eslint-disable */
 				site_name: opengraphSiteName
 				/* eslint-enable */
-			}}
-			twitter={{
-				handle: '@Codeytek',
-				site: '@Codeytek',
-				cardType: 'summary_large_image'
 			}}
 		/>
 	);
