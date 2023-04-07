@@ -21,7 +21,8 @@ export default function Seo ( {seo, uri} ){
 		<NextSeo
 			title={title}
 			description={opengraphDescription || metaDesc}
-			canonical={canonical}
+			// String repalcement to remove .ditsmartehjem from canonical url
+			canonical={canonical.replace( '.ditsmarthjem.dk', '' )}
 			noindex={"noindex" === metaRobotsNoindex }
 			nofollow={"nofollow" === metaRobotsNofollow}
 			openGraph={{
