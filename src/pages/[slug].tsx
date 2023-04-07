@@ -43,15 +43,10 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const {data} = await getAllPagesWithSlug();
-	const pathsData = [];
-	data?.pages?.nodes && data?.pages?.nodes.map( page => {
-			var slugs = page?.uri?.split( '/' ).filter( pageSlug => pageSlug );
-			pathsData.push( {params: {slug: slugs}} );
-			}
-	);
+	const data = await getAllPagesWithSlug();
+
 	return {
-		paths: pathsData,
-        fallback: 'blocking',
+		paths: data.edges.map(({ node }) => `/${node.slug}`) || [],
+        fallback: true,
 	};
 }
