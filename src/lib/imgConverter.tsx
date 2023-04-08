@@ -18,11 +18,11 @@ export default function imgConverter(element) {
       if (node.type === 'img') {
         if(imgNumber === 0){
           imgNumber++;
-        return React.createElement(Image, { src: node.props.src, alt: node.props.alt, width: node.props.width, height: node.props.height, priority: true})
+        return React.createElement(Image, { src: node.props.src, alt: node.props.alt, width: 1000, height: 1000, priority: true})
         }
         else{
           imgNumber++;
-          return React.createElement(Image, { src: node.props.src, alt: node.props.alt, width: node.props.width, height: node.props.height})
+          return React.createElement(Image, { src: node.props.src, alt: node.props.alt, width: 1000, height: 1000})
         }
 
       }

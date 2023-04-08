@@ -11,7 +11,7 @@
   }
 
   h2 {
-    @apply text-3xl md:text-4xl leading-extra-tight text-secondary;
+    @apply text-2xl md:text-4xl leading-extra-tight text-secondary;
   }
 
   h3 {

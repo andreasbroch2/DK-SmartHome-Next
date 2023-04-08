@@ -1,4 +1,3 @@
-import Container from './container'
 import Image from 'next/image'
 import NavigationMenu from './nav-menu'
 
@@ -14,7 +13,7 @@ export default function Footer({ menuItems }) {
         </div>
         <div className="basis-1/3">
           <p className="footer-header">Nyttige Links</p>
-          <NavigationMenu menuItems={menuItems} textColor="white" />
+          <NavigationMenu hidden={false} menuItems={menuItems} textColor="white" />
         </div>
         <div className="basis-1/3">
           <p className="footer-header">Kontakt</p>
