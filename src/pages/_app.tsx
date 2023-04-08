@@ -6,6 +6,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 import localFont from 'next/font/local'
 import Head from 'next/head'
+import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
 
 const poppins = localFont({
   src: [
@@ -20,6 +22,9 @@ const poppins = localFont({
 
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-TG6SCN8' });
+}, []);
   return (
     <>
     <Head>
