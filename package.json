@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -25,6 +26,7 @@
     "net": "^1.0.2",
     "next": "latest",
     "next-seo": "^5.15.0",
+    "next-sitemap": "^4.0.6",
     "nodemailer": "^6.9.1",
     "perf_hooks": "^0.0.1",
     "prop-types": "^15.8.1",

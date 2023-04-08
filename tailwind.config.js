@@ -38,8 +38,8 @@ module.exports = {
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
       fontFamily: {
-        primary: 'Poppins, sans-serif',
-        secondary: 'Poppins, sans-serif',
+        primary: ['var(--font-poppins)'],
+        secondary: ['var(--font-poppins)'],
     },
     },
   },
