@@ -29,6 +29,11 @@ export default function Page( {data, preview = false, menuItems, footerMenuItems
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
     const data = await getSinglePage( params?.slug);
+	if ( !data ) {
+		return {
+			notFound: true,
+		};
+	}
     const menuItems = await getNavMenu('PRIMARY');
 	const footerMenuItems = await getNavMenu('FOOTER');
 	return {
