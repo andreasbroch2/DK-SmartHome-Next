@@ -31,7 +31,7 @@ export default function Post({ post, preview, menuItems, footerMenuItems, cleanE
               <article className='single-post'>
                 <Head>
                   <title>
-                    {`${post?.title}`}
+                    {`${post?.seo.title}`}
                   </title>
                   <meta
                     property="og:image"
