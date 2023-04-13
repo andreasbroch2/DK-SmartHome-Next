@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Hardwares = ( {hardwares} ) => {
 	return (
-		<div className="all-blog-posts-container grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+		<div className="all-blog-posts-container container mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
 			{
 				hardwares.map( ( hardware, index ) => {
 					return (

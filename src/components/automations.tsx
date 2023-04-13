@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Automations = ( {automations} ) => {
 	return (
-		<div className="all-blog-posts-container grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+		<div className="all-blog-posts-container container mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 my-8">
 			{
 				automations.map( ( automation, index ) => {
 					return (

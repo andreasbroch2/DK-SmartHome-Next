@@ -188,10 +188,24 @@ article>*:not(.entry-content),
   @apply mx-auto max-w-screen-xl;
 }
 
-p a {
+p a, .single-post a {
   @apply text-primary underline;
 }
-
+.single-post div.toc-container nav {
+  ul {
+    @apply ml-0;
+    li{
+    line-height: normal;
+    ul{
+      @apply ml-6 mb-0;
+    }
+  }
+  }
+  a {
+  color: unset;
+    text-decoration: none;
+}
+}
 body.single-post {
   .entry-content {
     &>* {
@@ -262,16 +276,6 @@ body.single-post {
   background: #fbfcfd;
   border-radius: 7px;
   border: 1px solid #ddd;
-
-  ul,
-  ol {
-    @apply !ml-0;
-
-    li {
-      @apply !mb-0;
-    }
-  }
-
   .headlines {
     padding: 10px 20px;
     display: flex;
@@ -372,8 +376,10 @@ form.form, .form {
 }
 .single-post .entry-content{
   ul {
+    @apply ml-4 mb-3;
     list-style-position: inside;
     list-style-type: disc;
+    line-height: 2;
     a:hover{
       @apply text-primary;
     }
