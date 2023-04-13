@@ -187,7 +187,9 @@ article>*:not(.entry-content),
 .entry-content>* {
   @apply mx-auto max-w-screen-xl;
 }
-
+header li {
+  @apply hover:scale-110 hover:text-primary transition-all;
+}
 p a, .single-post a {
   @apply text-primary underline;
 }
