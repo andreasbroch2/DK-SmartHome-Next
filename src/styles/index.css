@@ -197,6 +197,7 @@ p a, .single-post a {
   ul {
     @apply ml-0;
     li{
+      @apply mb-0;
     line-height: normal;
     ul{
       @apply ml-6 mb-0;
@@ -208,7 +209,7 @@ p a, .single-post a {
     text-decoration: none;
 }
 }
-body.single-post {
+.single-post {
   .entry-content {
     &>* {
       max-width: 1400px;
@@ -381,7 +382,6 @@ form.form, .form {
     @apply ml-4 mb-3;
     list-style-position: inside;
     list-style-type: disc;
-    line-height: 2;
     a:hover{
       @apply text-primary;
     }
